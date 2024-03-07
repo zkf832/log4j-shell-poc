@@ -56,4 +56,6 @@ jobs:
         run: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
       - name: Run vulnerability analysis
-        run: grype sbom:log4shell-vulnerable-app-CDX.json -o table
+        #run: grype sbom:log4shell-vulnerable-app-CDX.json -o table
+        run: grype sbom:log4shell-vulnerable-app-CDX.json -o table | tail -n +2 | sort -k6,6r -k1,1d
+
