@@ -22,6 +22,8 @@ jobs:
           wget https://github.com/sigstore/cosign/releases/download/${COSIGN_VERSION}/cosign-linux-amd64 -O cosign
           chmod +x cosign
           sudo mv cosign /usr/local/bin/
+      - name: List files in the current directory
+        run: ls -l
 
       - name: Sign the SBOM
         env:
