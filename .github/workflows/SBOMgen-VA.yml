@@ -8,7 +8,9 @@ on:
 jobs:
   generate-and-sign-sbom:
     runs-on: ubuntu-latest
-    
+    permissions:
+      packages: write
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
