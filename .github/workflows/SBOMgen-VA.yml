@@ -37,7 +37,7 @@ jobs:
       - name: Sign the SBOM
         env:
           COSIGN_EXPERIMENTAL: "1"
-        run: cosign sign-blob --oidc-issuer="https://token.actions.githubusercontent.com" --output-signature log4shell-vulnerable-app-CDX.json.sig log4shell-vulnerable-app-CDX.json
+        run: cosign sign-blob --oidc-issuer="https://token.actions.githubusercontent.com" --yes --output-signature log4shell-vulnerable-app-CDX.json.sig log4shell-vulnerable-app-CDX.json
       
       - name: Commit SBOM and Signature to repository
         run: |
