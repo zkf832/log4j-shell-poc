@@ -37,3 +37,4 @@ jobs:
           git add log4shell-vulnerable-app-CDX.json.sig
           git commit -m "Sign SBOM with Cosign"
           git push
+#test
