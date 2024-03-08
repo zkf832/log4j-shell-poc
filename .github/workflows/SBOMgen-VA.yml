@@ -27,7 +27,7 @@ jobs:
       
       - name: Install Cosign
         run: |
-          COSIGN_VERSION="v1.5.2"
+          COSIGN_VERSION="v1.21.8"
           wget https://github.com/sigstore/cosign/releases/download/${COSIGN_VERSION}/cosign-linux-amd64 -O cosign
           chmod +x cosign
           sudo mv cosign /usr/local/bin/
