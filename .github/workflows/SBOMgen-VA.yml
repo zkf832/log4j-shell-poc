@@ -58,3 +58,4 @@ jobs:
       - name: Run vulnerability analysis
         #run: grype sbom:log4shell-vulnerable-app-CDX.json -o table
         run: grype sbom:log4shell-vulnerable-app-CDX.json -o table | tail -n +2 | awk 'BEGIN {OFS=FS="\t"} { if($6=="Critical") $6="1Critical"; else if($6=="High") $6="2High"; else if($6=="Medium") $6="3Medium"; else if($6=="Low") $6="4Low"; print $0; }' | sort -k6,6 -k1,1d | awk '{sub(/^[1-4]/, "", $6); print}'
+#test
