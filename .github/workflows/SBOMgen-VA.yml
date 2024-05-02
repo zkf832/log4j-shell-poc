@@ -42,7 +42,6 @@ jobs:
           COSIGN_EXPERIMENTAL: "1"
         run: |
           cosign sign-blob --oidc-issuer="https://token.actions.githubusercontent.com" \
-          --oidc-client-id=$CLIENT_ID --oidc-client-secret=$CLIENT_SECRET \
           --yes \
           --output-signature log4shell-vulnerable-app-CDX.json.sig \
           --output-certificate log4shell-vulnerable-app-CDX.pem \
