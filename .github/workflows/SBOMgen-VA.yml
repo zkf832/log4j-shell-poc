@@ -75,3 +75,4 @@ jobs:
       - name: Run vulnerability analysis
         run: |
           grype sbom:log4shell-vulnerable-app-CDX.json -o table
+          grype sbom:log4shell-vulnerable-app-CDX.json
