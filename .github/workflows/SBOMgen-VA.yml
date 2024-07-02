@@ -20,15 +20,15 @@ jobs:
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-      - name: Generate SBOM in CycloneDX format
+      - name: Generate SBOM in SPDX format
         run: |
-          syft . -o cyclonedx-json=log4shell-vulnerable-app-CDX.json
+          syft . -o spdx-json=log4shell-vulnerable-app-SPDX.json
 
       - name: Upload SBOM as an artifact
         uses: actions/upload-artifact@v2
         with:
           name: SBOM
-          path: log4shell-vulnerable-app-CDX.json
+          path: log4shell-vulnerable-app-SPDX.json
 
       - name: Install Cosign
         run: |
@@ -43,15 +43,15 @@ jobs:
         run: |
           cosign sign-blob --oidc-issuer="https://token.actions.githubusercontent.com" \
           --yes \
-          --output-signature log4shell-vulnerable-app-CDX.json.sig \
-          --output-certificate log4shell-vulnerable-app-CDX.pem \
-          log4shell-vulnerable-app-CDX.json
+          --output-signature log4shell-vulnerable-app-SPDX.json.sig \
+          --output-certificate log4shell-vulnerable-app-SPDX.pem \
+          log4shell-vulnerable-app-SPDX.json
 
       - name: Commit SBOM, Signature, and Certificate to repository
         run: |
           git config --local user.email "<your_email@example.com>"
           git config --local user.name "<Your GitHub Username>"
-          git add log4shell-vulnerable-app-CDX.json log4shell-vulnerable-app-CDX.json.sig log4shell-vulnerable-app-CDX.pem
+          git add log4shell-vulnerable-app-SPDX.json log4shell-vulnerable-app-SPDX.json.sig log4shell-vulnerable-app-SPDX.pem
           git commit -m "Add and Sign SBOM for log4shell-vulnerable-app"
           git push
 
@@ -74,5 +74,5 @@ jobs:
 
       - name: Run vulnerability analysis
         run: |
-          grype sbom:log4shell-vulnerable-app-CDX.json -o table
-          grype sbom:log4shell-vulnerable-app-CDX.json
+          grype sbom:log4shell-vulnerable-app-SPDX.json -o table
+          grype sbom:log4shell-vulnerable-app-SPDX.json
