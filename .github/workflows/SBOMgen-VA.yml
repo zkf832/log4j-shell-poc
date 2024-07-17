@@ -74,5 +74,6 @@ jobs:
 
       - name: Run vulnerability analysis
         run: |
+          grype db update
           grype sbom:log4shell-vulnerable-app-SPDX.json -o table
           grype sbom:log4shell-vulnerable-app-SPDX.json
