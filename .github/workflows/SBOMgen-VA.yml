@@ -1,9 +1,10 @@
 name: Generate, Sign, and Commit SBOM
+
 on:
   push:
     branches:
       - main
-#test
+
 jobs:
   generate-and-sign-sbom:
     runs-on: ubuntu-latest
@@ -47,9 +48,11 @@ jobs:
           log4shell-vulnerable-app-SPDX.json
 
       - name: Commit SBOM, Signature, and Certificate to repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --local user.email "<your_email@example.com>"
-          git config --local user.name "<Your GitHub Username>"
+          git config --local user.email "your_email@example.com"
+          git config --local user.name "Your GitHub Username"
           git add log4shell-vulnerable-app-SPDX.json log4shell-vulnerable-app-SPDX.json.sig log4shell-vulnerable-app-SPDX.pem
           git commit -m "Add and Sign SBOM for log4shell-vulnerable-app"
           git push
@@ -67,12 +70,18 @@ jobs:
         with:
           name: SBOM
 
+      - name: List files
+        run: ls -la
+
       - name: Install Grype
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
 
       - name: Run vulnerability analysis
+        timeout-minutes: 10
+        env:
+          GRYPE_CHECK_FOR_APP_UPDATE: false
         run: |
-          grype db update
+          grype db update --quiet
           grype sbom:log4shell-vulnerable-app-SPDX.json -o table
           grype sbom:log4shell-vulnerable-app-SPDX.json
