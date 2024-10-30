@@ -13,7 +13,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Syft
         run: |
@@ -24,7 +24,7 @@ jobs:
           syft . -o spdx-json=log4shell-vulnerable-app-SPDX.json
 
       - name: Upload SBOM as an artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: SBOM
           path: log4shell-vulnerable-app-SPDX.json
@@ -60,10 +60,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Download SBOM artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: SBOM
 
