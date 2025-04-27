@@ -60,6 +60,7 @@ Oracle thankfully provides an archive for all previous java versions:<br>
 [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html).<br>
 Scroll down to `8u20` and download the appropriate files for your operating system and hardware.
 ![Screenshot from 2021-12-11 00-09-25](https://user-images.githubusercontent.com/46561460/145655967-b5808b9f-d919-476f-9cbc-ed9eaff51585.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzkf832%2Flog4j-shell-poc.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fzkf832%2Flog4j-shell-poc?ref=badge_shield)
 
 **Note:** You do need to make an account to be able to download the package.
 
@@ -78,3 +79,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.20-b23, mixed mode)
 Disclaimer
 ----------
 This repository is not intended to be a one-click exploit to CVE-2021-44228. The purpose of this project is to help people learn about this vulnerability, and perhaps test their own applications (however there are better applications for this purpose, ei: [https://log4shell.tools/](https://log4shell.tools/)).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fzkf832%2Flog4j-shell-poc.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fzkf832%2Flog4j-shell-poc?ref=badge_large)
